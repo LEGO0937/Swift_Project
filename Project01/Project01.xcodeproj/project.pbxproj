@@ -19,6 +19,11 @@
 		A14B1BBF246B0448008632F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B1BBD246B0448008632F8 /* LaunchScreen.storyboard */; };
 		A14B1BC7246B053F008632F8 /* MaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BC6246B053F008632F8 /* MaskViewController.swift */; };
 		A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BC8246B059A008632F8 /* HospitalViewController.swift */; };
+		A1D939E4247BAADB00915E35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E2247BAADB00915E35 /* Config.swift */; };
+		A1D939E5247BAADB00915E35 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E3247BAADB00915E35 /* ExplodeView.swift */; };
+		A1D939E8247BAAFB00915E35 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D939E7247BAAFB00915E35 /* particle.png */; };
+		A1FCC197247BB907009BAD42 /* MaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */; };
+		A1FCC199247BBB94009BAD42 /* MaskDetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		A14B1BC0246B0448008632F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14B1BC6246B053F008632F8 /* MaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskViewController.swift; sourceTree = "<group>"; };
 		A14B1BC8246B059A008632F8 /* HospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalViewController.swift; sourceTree = "<group>"; };
+		A1D939E2247BAADB00915E35 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Project01/Config.swift; sourceTree = SOURCE_ROOT; };
+		A1D939E3247BAADB00915E35 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExplodeView.swift; path = Project01/ExplodeView.swift; sourceTree = SOURCE_ROOT; };
+		A1D939E7247BAAFB00915E35 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = Project01/particle.png; sourceTree = SOURCE_ROOT; };
+		A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTableViewController.swift; sourceTree = "<group>"; };
+		A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskDetailedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +78,9 @@
 		A14B1BB1246B0447008632F8 /* Project01 */ = {
 			isa = PBXGroup;
 			children = (
+				A1D939E6247BAAE200915E35 /* Images */,
+				A1D939E1247BAAA100915E35 /* Utilities */,
 				A110A5C9246C3E6400168E8C /* MaskStoreViews.swift */,
-				A110A5C5246C2E4E00168E8C /* JSON.swift */,
 				A14B1BB2246B0447008632F8 /* AppDelegate.swift */,
 				A14B1BB4246B0447008632F8 /* SceneDelegate.swift */,
 				A14B1BB8246B0447008632F8 /* Main.storyboard */,
@@ -81,8 +92,28 @@
 				A12497DA246BF5EE0057FDAF /* Mask2ViewController.swift */,
 				A12497DC246C09DB0057FDAF /* MaskMapViewController.swift */,
 				A110A5C7246C2E6000168E8C /* MaskStore.swift */,
+				A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */,
+				A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */,
 			);
 			path = Project01;
+			sourceTree = "<group>";
+		};
+		A1D939E1247BAAA100915E35 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A1D939E2247BAADB00915E35 /* Config.swift */,
+				A1D939E3247BAADB00915E35 /* ExplodeView.swift */,
+				A110A5C5246C2E4E00168E8C /* JSON.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A1D939E6247BAAE200915E35 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A1D939E7247BAAFB00915E35 /* particle.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +177,7 @@
 				A14B1BBF246B0448008632F8 /* LaunchScreen.storyboard in Resources */,
 				A14B1BBC246B0448008632F8 /* Assets.xcassets in Resources */,
 				A14B1BBA246B0447008632F8 /* Main.storyboard in Resources */,
+				A1D939E8247BAAFB00915E35 /* particle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +193,14 @@
 				A110A5C6246C2E4E00168E8C /* JSON.swift in Sources */,
 				A110A5C8246C2E6000168E8C /* MaskStore.swift in Sources */,
 				A14B1BB3246B0447008632F8 /* AppDelegate.swift in Sources */,
+				A1FCC199247BBB94009BAD42 /* MaskDetailedTableViewController.swift in Sources */,
 				A14B1BC7246B053F008632F8 /* MaskViewController.swift in Sources */,
 				A12497DD246C09DB0057FDAF /* MaskMapViewController.swift in Sources */,
+				A1D939E5247BAADB00915E35 /* ExplodeView.swift in Sources */,
+				A1D939E4247BAADB00915E35 /* Config.swift in Sources */,
 				A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */,
 				A14B1BB5246B0447008632F8 /* SceneDelegate.swift in Sources */,
+				A1FCC197247BB907009BAD42 /* MaskTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

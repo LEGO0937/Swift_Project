@@ -105,11 +105,21 @@ class Mask2ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
        }
        //pickerView의 주어진 컴포넌트 /row에 대한 데이터 = pickerDataSource 배열의 원소
      func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return pickerDataSource2[firstId ?? "서울특별시"]?[row]
        }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         secondId = pickerDataSource2[firstId ?? "서울특별시"]?[row] as! String
+        
+        let explore1 = ExplodeView(frame: CGRect(x: 30, y: 280, width: 10, height: 10))
+        pickerView.superview?.addSubview(explore1)
+        pickerView.superview?.sendSubviewToBack(_: explore1)
+        
+        let explore2 = ExplodeView(frame: CGRect(x: 350, y: 280, width: 10, height: 10))
+        pickerView.superview?.addSubview(explore2)
+        pickerView.superview?.sendSubviewToBack(_: explore2)
+        //audioController.playerEffect(name: SoundDing)
     }
 
     func startSession() throws {
