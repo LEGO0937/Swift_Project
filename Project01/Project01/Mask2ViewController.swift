@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Speech
 
 class Mask2ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerDataSource2 = [
@@ -26,12 +27,51 @@ class Mask2ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
         "경상남도": ["창원시", "진주시", "통영시", "사천시", "김해시", "밀양시", "거제시", "양산시", "의령군", "함안군", "창녕군", "고성군", "남해군", "하동군", "산청군", "함양군", "거창군", "합천군"],
         "제주특별자치도": ["제주시", "서귀포시"]]
     
+    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var secondName: UIPickerView!
+    @IBOutlet weak var transcribeButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var TextView: UITextView!
+    
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ko-KR"))!
+    
+    private var speechRecognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var speechRecognitionTask: SFSpeechRecognitionTask?
+    
+    private let audioEngine = AVAudioEngine()
+    
     var firstId : String?
     
     var secondId : String = "종로구"
     
     
+    @IBAction func startTranscribing(_ sender: Any)
+    {
+        transcribeButton.isEnabled = false
+        stopButton.isEnabled = true
+        try! startSession()
+    }
+    @IBAction func stopTrancribing(_ sender: Any)
+    {
+        audioEngine.stop()
+        speechRecognitionRequest?.endAudio()
+        transcribeButton.isEnabled = true
+        stopButton.isEnabled = false
+        
+        var idx : Int = 0
+        
+        for key in pickerDataSource2[firstId ?? "서울특별시"]!
+        {
+            if TextView.text == key{
+                self.pickerView.selectRow(idx, inComponent: 0, animated: true)
+                secondId = key
+            break
+            }
+            
+            idx += 1
+        }
+        
+    }
     @IBAction func doneToPickerViewController(segue: UIStoryboardSegue){
     
     }
@@ -72,6 +112,70 @@ class Mask2ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
         secondId = pickerDataSource2[firstId ?? "서울특별시"]?[row] as! String
     }
 
+    func startSession() throws {
+        if let recognitionTask = speechRecognitionTask{
+            recognitionTask.cancel()
+            self.speechRecognitionTask = nil
+        }
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(AVAudioSession.Category.record)
+        
+        speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        guard let recognitionRequest = speechRecognitionRequest else{
+            fatalError("SFSpeechAudioBufferRecognitionRequest object creation failed")
+        }
+        let inputNode = audioEngine.inputNode
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        speechRecognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest){
+            result,error in var finished = false
+            
+            if let result = result{
+                self.TextView.text = result.bestTranscription.formattedString
+                finished = result.isFinal
+            }
+            if error != nil || finished{
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.speechRecognitionRequest = nil
+                self.speechRecognitionTask = nil
+                
+                self.transcribeButton.isEnabled = true
+            }
+        }
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat){
+            (buffer: AVAudioPCMBuffer, when: AVAudioTime) in self.speechRecognitionRequest?.append(buffer)
+        }
+        audioEngine.prepare()
+        try audioEngine.start()
+    }
+    
+    func authorizeSR()
+    {
+        SFSpeechRecognizer.requestAuthorization{
+            authStatus in OperationQueue.main.addOperation {
+                switch authStatus{
+                case .authorized:
+                    self.transcribeButton.isEnabled = true
+                    
+                case .denied:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition access denied by user", for: .disabled)
+                case .restricted:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition restricted on device", for: .disabled)
+                case .notDetermined:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition not authorized", for: .disabled)
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
