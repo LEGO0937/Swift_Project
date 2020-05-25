@@ -117,12 +117,12 @@
                     <navigationItem key="navigationItem" title="마스크 판매정보 표시(구, 군)" id="gaW-01-B2o">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="aXu-Vt-1fP">
                             <connections>
-                                <segue destination="lKG-DE-9Dv" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="JFI-y4-lVD"/>
+                                <segue destination="lKG-DE-9Dv" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="ME2-7W-Sro"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="03I-we-nSG">
                             <connections>
-                                <segue destination="Qdr-6o-m86" kind="show" identifier="segueToMaskMapView" id="zpJ-bK-dKI"/>
+                                <segue destination="icW-9a-A2M" kind="show" identifier="segueToMask3View" id="Q13-w8-RUt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -142,14 +142,19 @@
         <!--마스크 판매처-->
         <scene sceneID="YiJ-og-RT4">
             <objects>
-                <tableViewController id="bj8-pd-TlF" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dha-NA-vX4">
+                <tableViewController id="bj8-pd-TlF" customClass="MaskTableViewController" customModule="Project01" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Dha-NA-vX4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLa-lL-v8g">
+                            <rect key="frame" x="0.0" y="129" width="414" height="149"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </tableView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="h6E-MT-QI6" detailTextLabel="48S-rC-bhZ" style="IBUITableViewCellStyleSubtitle" id="TzQ-bV-50t">
-                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TzQ-bV-50t" id="dNP-pt-tQD">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -173,17 +178,30 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="bj8-pd-TlF" id="RFn-E7-ZBz"/>
                             <outlet property="delegate" destination="bj8-pd-TlF" id="npH-w6-a5C"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="마스크 판매처" id="vRz-H8-Om7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="rbt-ob-zGP"/>
-                        <barButtonItem key="rightBarButtonItem" title="지도 표시" id="85Z-Gv-DvK"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="rbt-ob-zGP">
+                            <connections>
+                                <segue destination="GP7-je-PKU" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="eYt-cA-9uZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="지도 표시" id="85Z-Gv-DvK">
+                            <connections>
+                                <segue destination="Qdr-6o-m86" kind="show" identifier="segueToMaskMapView" id="60j-dI-JNq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailedTableView" destination="oLa-lL-v8g" id="Fny-ew-9SB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDM-EA-v9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GP7-je-PKU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4868.115942028986" y="314.73214285714283"/>
         </scene>
@@ -255,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOY-W2-Rvq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3921.739130434783" y="1001.7857142857142"/>
+            <point key="canvasLocation" x="5630" y="1059"/>
         </scene>
         <!--Hospital View Controller-->
         <scene sceneID="e0X-AZ-sOj">
@@ -365,13 +383,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVX-4s-bYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3011.594202898551" y="1001.7857142857142"/>
+            <point key="canvasLocation" x="4868" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DUg-zV-cYs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="icW-9a-A2M" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="2Nh-NA-9RD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fM9-H0-HYO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
