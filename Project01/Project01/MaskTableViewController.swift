@@ -11,8 +11,10 @@ import UIKit
 class MaskTableViewController: UITableViewController {
     var name : String = ""
     var MaskStores : [MaskStore] = []
-       
-    @IBOutlet weak var detailedTableView: UITableView!
+    
+    var storeName : String = ""
+    var storeAddr : String = ""
+    
     //전송받은 posts 배열에서 정보를 얻어서 Hospital 객체를 생성하고 배열에 추가 생성
     func loadInitialData(addr: String){
           // guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
@@ -72,30 +74,28 @@ class MaskTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return MaskStores.count
     }
-
-    //테이블 뷰 셀의 내용은 title과 subtitle을 posts 배열 원소(dictionary)에서 yadmNm과 addr에 해당하는 value로 설정
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if tableView == detailedTableView{
-            let cell = UITableViewCell(style: UITableViewCell.CellStyle.value2,reuseIdentifier: nil)
-            
             let store = MaskStores[indexPath.row]
              
             // let tipAmt = possibleTips[tipPct]!.tipAmt
 
-            cell.textLabel!.text = store.name
-            cell.detailTextLabel?.text = store.title
-            return cell
-        }
-        else{
+            storeName = store.name
+            storeAddr = store.title ?? ""
+        
+    }
+    //테이블 뷰 셀의 내용은 title과 subtitle을 posts 배열 원소(dictionary)에서 yadmNm과 addr에 해당하는 value로 설정
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel?.text = MaskStores[indexPath.row].name
         
         cell.detailTextLabel?.text = MaskStores[indexPath.row].type
         // Configure the cell...
-            return cell
-        }
+        return cell
+        
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
