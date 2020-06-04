@@ -1,22 +1,24 @@
 //
-//  MaskTableViewController.swift
+//  MaskTablesViewController.swift
 //  Project01
 //
-//  Created by KPUGAME on 5/25/20.
+//  Created by KPUGAME on 5/26/20.
 //  Copyright © 2020 KIMYOWNG WAN. All rights reserved.
 //
 
 import UIKit
 
-class MaskTableViewController: UITableViewController {
+class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+
+    @IBOutlet weak var StoresTableView: UITableView!
+    @IBOutlet weak var StoreDetailTableView: UITableView!
+    
     var name : String = ""
     var MaskStores : [MaskStore] = []
     
     var storeName : String = ""
     var storeAddr : String = ""
     
-    @IBOutlet weak var detailedTableView: UITableView!
-    //전송받은 posts 배열에서 정보를 얻어서 Hospital 객체를 생성하고 배열에 추가 생성
     func loadInitialData(addr: String){
           // guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
             //   else{return}
@@ -48,6 +50,7 @@ class MaskTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInitialData(addr: name)
+        StoresTableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -65,20 +68,22 @@ class MaskTableViewController: UITableViewController {
             }
         }
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if tableView == StoreDetailTableView{
+            return 1
+        }
+        else if tableView == StoresTableView{
+            return MaskStores.count
+        }
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return MaskStores.count
-    }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == detailedTableView{
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == StoreDetailTableView{
         }
-        else{
+        else if tableView == StoresTableView{
             let store = MaskStores[indexPath.row]
              
             // let tipAmt = possibleTips[tipPct]!.tipAmt
@@ -86,13 +91,14 @@ class MaskTableViewController: UITableViewController {
             storeName = store.name
             storeAddr = store.title ?? ""
             
-            detailedTableView.reloadData()
+            StoreDetailTableView.reloadData()
         }
     }
+ 
     //테이블 뷰 셀의 내용은 title과 subtitle을 posts 배열 원소(dictionary)에서 yadmNm과 addr에 해당하는 value로 설정
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        if tableView == detailedTableView{
+        if tableView == StoreDetailTableView{
             let cell = UITableViewCell(style: UITableViewCell.CellStyle.value2,reuseIdentifier: nil)
             
             //let store = MaskStores[indexPath.row]
@@ -113,50 +119,7 @@ class MaskTableViewController: UITableViewController {
             return cell
         }
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
 
     /*
     // MARK: - Navigation

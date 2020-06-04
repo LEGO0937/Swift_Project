@@ -19,6 +19,7 @@
 		A14B1BBF246B0448008632F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B1BBD246B0448008632F8 /* LaunchScreen.storyboard */; };
 		A14B1BC7246B053F008632F8 /* MaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BC6246B053F008632F8 /* MaskViewController.swift */; };
 		A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BC8246B059A008632F8 /* HospitalViewController.swift */; };
+		A1CD72FD247D55CF003B69A1 /* MaskTablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CD72FC247D55CF003B69A1 /* MaskTablesViewController.swift */; };
 		A1D939E4247BAADB00915E35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E2247BAADB00915E35 /* Config.swift */; };
 		A1D939E5247BAADB00915E35 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E3247BAADB00915E35 /* ExplodeView.swift */; };
 		A1D939E8247BAAFB00915E35 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D939E7247BAAFB00915E35 /* particle.png */; };
@@ -41,6 +42,7 @@
 		A14B1BC0246B0448008632F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14B1BC6246B053F008632F8 /* MaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskViewController.swift; sourceTree = "<group>"; };
 		A14B1BC8246B059A008632F8 /* HospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalViewController.swift; sourceTree = "<group>"; };
+		A1CD72FC247D55CF003B69A1 /* MaskTablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTablesViewController.swift; sourceTree = "<group>"; };
 		A1D939E2247BAADB00915E35 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Project01/Config.swift; sourceTree = SOURCE_ROOT; };
 		A1D939E3247BAADB00915E35 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExplodeView.swift; path = Project01/ExplodeView.swift; sourceTree = SOURCE_ROOT; };
 		A1D939E7247BAAFB00915E35 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = Project01/particle.png; sourceTree = SOURCE_ROOT; };
@@ -94,6 +96,7 @@
 				A110A5C7246C2E6000168E8C /* MaskStore.swift */,
 				A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */,
 				A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */,
+				A1CD72FC247D55CF003B69A1 /* MaskTablesViewController.swift */,
 			);
 			path = Project01;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				A14B1BC7246B053F008632F8 /* MaskViewController.swift in Sources */,
 				A12497DD246C09DB0057FDAF /* MaskMapViewController.swift in Sources */,
 				A1D939E5247BAADB00915E35 /* ExplodeView.swift in Sources */,
+				A1CD72FD247D55CF003B69A1 /* MaskTablesViewController.swift in Sources */,
 				A1D939E4247BAADB00915E35 /* Config.swift in Sources */,
 				A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */,
 				A14B1BB5246B0447008632F8 /* SceneDelegate.swift in Sources */,

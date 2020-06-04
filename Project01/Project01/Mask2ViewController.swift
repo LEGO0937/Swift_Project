@@ -78,8 +78,8 @@ class Mask2ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
     override func prepare(for segue: UIStoryboardSegue,sender: Any?){
           if segue.identifier == "segueToMask3View"{
               if let navController = segue.destination as? UINavigationController{
-                if let maskTableViewController = navController.topViewController as? MaskTableViewController{
-                    maskTableViewController.name = (firstId ?? "서울특별시")+" "+secondId//url + sgguCd
+                if let maskTablesViewController = navController.topViewController as? MaskTablesViewController{
+                    maskTablesViewController.name = (firstId ?? "서울특별시")+" "+secondId//url + sgguCd
                 }
               }
           }
