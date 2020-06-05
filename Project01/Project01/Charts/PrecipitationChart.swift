@@ -55,18 +55,18 @@ struct PrecipitationChart: View {
           Spacer()
         
           Text(self.arr[month])
-            .font(.footnote)
-            .rotationEffect(.degrees(0))
+            .font(.system(size: 10))
+            .rotationEffect(.degrees(-90))
             .offset(y: self.sumPrecipitation(self.arr[month]) < 2.4 ? 0 : 35)
             .zIndex(1)
           // 5
           Rectangle()
             .fill(Color.green)
-            .frame(width: 20, height: CGFloat(self.sumPrecipitation(self.arr[month])) * 100.0)
+            .frame(width: 20, height: CGFloat(self.sumPrecipitation(self.arr[month])) * 100.0 + 30)
           
           // 6
             Text((self.sumPrecipitation(self.arr[month]) * 100.0).stringToOneDecimal)
-            .font(.footnote)
+            .font(.system(size: 8))
             .frame(height: 20)
         }
       }
