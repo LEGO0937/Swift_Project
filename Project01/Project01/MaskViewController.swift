@@ -8,7 +8,11 @@
 
 import UIKit
 import Speech
+import SwiftUI
 
+var aMaskStores : [MaskStore] = []
+var total : Double = 0
+var test : Dictionary<String,Double> = ["서울":0, "부산":0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "울산": 0, "경기":0, "강원":0,"충청":0,"전라":0,"경상":0,"제주":0]
 class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -16,6 +20,9 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var TextView: UITextView!
     var firstId : String = "서울특별시"
+    
+    var areas : Dictionary<String,Double> = ["서울":0, "부산":0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "울산": 0, "경기":0, "강원":0,
+                              "충청":0,"전라":0,"경상":0,"제주":0]
     
     
     
@@ -26,6 +33,53 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     private let audioEngine = AVAudioEngine()
     
+    
+    func loadInitialData(addr: String){
+       // guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
+         //   else{return}
+        
+        for i in 1...5{
+        var fileN = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json?page="
+            fileN = fileN + String(i) + "&perPage=5000"
+        guard let url = URL(string: fileN) else {return}
+        
+        
+        let optionalData = try? Data(contentsOf: url)
+       
+        guard
+            let data = optionalData,
+            let json = try? JSONSerialization.jsonObject(with: data),
+            let dictionary = json as? [String: Any],
+            let works = dictionary["storeInfos"] as? [Dictionary<String,Any>]
+            //let dic2 =   dic as? [[Any]],
+            //let works = dictionary["storeInfos"] as? [[Any]]
+            else{return}
+        //let t = works[0]
+       // let t = works.compactMap{$0 as? [String : Any] }
+        let validWorks = works.flatMap{ MaskStore(json: $0) }
+        aMaskStores.append(contentsOf: validWorks)
+        }
+    }
+    
+    let stations = WeatherInformation()
+    
+    @IBSegueAction func embedSwiftUIView(_ coder: NSCoder) -> UIViewController? {
+        loadInitialData(addr: "")
+        // Do any additional setup after loading the view.
+        for store in aMaskStores
+        {
+            let end = String(store.title!).index(String(store.title!).startIndex, offsetBy: 2)
+            let range = String(store.title!).startIndex..<end
+            
+            let str = String(store.title!).substring(with: range)
+            if areas.keys.contains(str){
+                total += 1
+                areas[str]! += 1
+            }
+        }
+        
+        return UIHostingController(coder:coder, rootView: StationInfo(station: (areas)))
+    }
     @IBAction func startTranscribing(_ sender: Any)
     {
         transcribeButton.isEnabled = false
@@ -109,16 +163,18 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var firstName: UIPickerView!
     
-    var pickerDataSource = ["서울특별시", "부산광역시","대구광역시","인천광역시", "광주광역시", "울산광역시", "경기도", "강원도",
+    var pickerDataSource = ["서울특별시", "부산광역시","대구광역시","인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도",
     "충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주특별자치도"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.firstName.delegate = self;
         self.firstName.dataSource = self;
-        // Do any additional setup after loading the view.
+        
     }
     
-
+ 
     
      func numberOfComponents(in pickerView: UIPickerView) -> Int{
            return 1

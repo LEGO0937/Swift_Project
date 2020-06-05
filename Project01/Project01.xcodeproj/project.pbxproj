@@ -23,7 +23,16 @@
 		A1D939E4247BAADB00915E35 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E2247BAADB00915E35 /* Config.swift */; };
 		A1D939E5247BAADB00915E35 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D939E3247BAADB00915E35 /* ExplodeView.swift */; };
 		A1D939E8247BAAFB00915E35 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D939E7247BAAFB00915E35 /* particle.png */; };
-		A1FCC197247BB907009BAD42 /* MaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */; };
+		A1F1E596248903D400192BA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E584248903D400192BA6 /* ContentView.swift */; };
+		A1F1E597248903D400192BA6 /* PrecipitationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E586248903D400192BA6 /* PrecipitationTab.swift */; };
+		A1F1E59A248903D400192BA6 /* WeatherStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E58A248903D400192BA6 /* WeatherStation.swift */; };
+		A1F1E59B248903D400192BA6 /* weather-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1F1E58B248903D400192BA6 /* weather-data.csv */; };
+		A1F1E59C248903D400192BA6 /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E58C248903D400192BA6 /* DayInfo.swift */; };
+		A1F1E59D248903D400192BA6 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E58D248903D400192BA6 /* WeatherInformation.swift */; };
+		A1F1E59F248903D400192BA6 /* PrecipitationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E590248903D400192BA6 /* PrecipitationChart.swift */; };
+		A1F1E5A1248903D400192BA6 /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E592248903D400192BA6 /* StationInfo.swift */; };
+		A1F1E5A2248903D400192BA6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E593248903D400192BA6 /* MapView.swift */; };
+		A1F1E5A4248903D400192BA6 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1E595248903D400192BA6 /* DoubleExtension.swift */; };
 		A1FCC199247BBB94009BAD42 /* MaskDetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +55,16 @@
 		A1D939E2247BAADB00915E35 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Project01/Config.swift; sourceTree = SOURCE_ROOT; };
 		A1D939E3247BAADB00915E35 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExplodeView.swift; path = Project01/ExplodeView.swift; sourceTree = SOURCE_ROOT; };
 		A1D939E7247BAAFB00915E35 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = Project01/particle.png; sourceTree = SOURCE_ROOT; };
-		A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTableViewController.swift; sourceTree = "<group>"; };
+		A1F1E584248903D400192BA6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Project01/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		A1F1E586248903D400192BA6 /* PrecipitationTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecipitationTab.swift; sourceTree = "<group>"; };
+		A1F1E58A248903D400192BA6 /* WeatherStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherStation.swift; sourceTree = "<group>"; };
+		A1F1E58B248903D400192BA6 /* weather-data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "weather-data.csv"; sourceTree = "<group>"; };
+		A1F1E58C248903D400192BA6 /* DayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
+		A1F1E58D248903D400192BA6 /* WeatherInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
+		A1F1E590248903D400192BA6 /* PrecipitationChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecipitationChart.swift; sourceTree = "<group>"; };
+		A1F1E592248903D400192BA6 /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationInfo.swift; path = Project01/StationInfo.swift; sourceTree = SOURCE_ROOT; };
+		A1F1E593248903D400192BA6 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = Project01/MapView.swift; sourceTree = SOURCE_ROOT; };
+		A1F1E595248903D400192BA6 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleExtension.swift; path = Project01/DoubleExtension.swift; sourceTree = SOURCE_ROOT; };
 		A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskDetailedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +98,7 @@
 		A14B1BB1246B0447008632F8 /* Project01 */ = {
 			isa = PBXGroup;
 			children = (
+				A1F1E583248903B300192BA6 /* New Chart */,
 				A1D939E6247BAAE200915E35 /* Images */,
 				A1D939E1247BAAA100915E35 /* Utilities */,
 				A110A5C9246C3E6400168E8C /* MaskStoreViews.swift */,
@@ -94,7 +113,6 @@
 				A12497DA246BF5EE0057FDAF /* Mask2ViewController.swift */,
 				A12497DC246C09DB0057FDAF /* MaskMapViewController.swift */,
 				A110A5C7246C2E6000168E8C /* MaskStore.swift */,
-				A1FCC196247BB907009BAD42 /* MaskTableViewController.swift */,
 				A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */,
 				A1CD72FC247D55CF003B69A1 /* MaskTablesViewController.swift */,
 			);
@@ -118,6 +136,50 @@
 			);
 			path = Images;
 			sourceTree = "<group>";
+		};
+		A1F1E583248903B300192BA6 /* New Chart */ = {
+			isa = PBXGroup;
+			children = (
+				A1F1E58E248903D400192BA6 /* Charts */,
+				A1F1E584248903D400192BA6 /* ContentView.swift */,
+				A1F1E595248903D400192BA6 /* DoubleExtension.swift */,
+				A1F1E593248903D400192BA6 /* MapView.swift */,
+				A1F1E589248903D400192BA6 /* Models */,
+				A1F1E592248903D400192BA6 /* StationInfo.swift */,
+				A1F1E585248903D400192BA6 /* Tabs */,
+			);
+			path = "New Chart";
+			sourceTree = "<group>";
+		};
+		A1F1E585248903D400192BA6 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				A1F1E586248903D400192BA6 /* PrecipitationTab.swift */,
+			);
+			name = Tabs;
+			path = Project01/Tabs;
+			sourceTree = SOURCE_ROOT;
+		};
+		A1F1E589248903D400192BA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1F1E58A248903D400192BA6 /* WeatherStation.swift */,
+				A1F1E58B248903D400192BA6 /* weather-data.csv */,
+				A1F1E58C248903D400192BA6 /* DayInfo.swift */,
+				A1F1E58D248903D400192BA6 /* WeatherInformation.swift */,
+			);
+			name = Models;
+			path = Project01/Models;
+			sourceTree = SOURCE_ROOT;
+		};
+		A1F1E58E248903D400192BA6 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				A1F1E590248903D400192BA6 /* PrecipitationChart.swift */,
+			);
+			name = Charts;
+			path = Project01/Charts;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -177,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F1E59B248903D400192BA6 /* weather-data.csv in Resources */,
 				A14B1BBF246B0448008632F8 /* LaunchScreen.storyboard in Resources */,
 				A14B1BBC246B0448008632F8 /* Assets.xcassets in Resources */,
 				A14B1BBA246B0447008632F8 /* Main.storyboard in Resources */,
@@ -192,10 +255,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A12497DB246BF5EE0057FDAF /* Mask2ViewController.swift in Sources */,
+				A1F1E5A1248903D400192BA6 /* StationInfo.swift in Sources */,
+				A1F1E5A4248903D400192BA6 /* DoubleExtension.swift in Sources */,
 				A110A5CA246C3E6400168E8C /* MaskStoreViews.swift in Sources */,
+				A1F1E59C248903D400192BA6 /* DayInfo.swift in Sources */,
+				A1F1E596248903D400192BA6 /* ContentView.swift in Sources */,
 				A110A5C6246C2E4E00168E8C /* JSON.swift in Sources */,
+				A1F1E59D248903D400192BA6 /* WeatherInformation.swift in Sources */,
 				A110A5C8246C2E6000168E8C /* MaskStore.swift in Sources */,
+				A1F1E597248903D400192BA6 /* PrecipitationTab.swift in Sources */,
 				A14B1BB3246B0447008632F8 /* AppDelegate.swift in Sources */,
+				A1F1E5A2248903D400192BA6 /* MapView.swift in Sources */,
+				A1F1E59F248903D400192BA6 /* PrecipitationChart.swift in Sources */,
+				A1F1E59A248903D400192BA6 /* WeatherStation.swift in Sources */,
 				A1FCC199247BBB94009BAD42 /* MaskDetailedTableViewController.swift in Sources */,
 				A14B1BC7246B053F008632F8 /* MaskViewController.swift in Sources */,
 				A12497DD246C09DB0057FDAF /* MaskMapViewController.swift in Sources */,
@@ -204,7 +276,6 @@
 				A1D939E4247BAADB00915E35 /* Config.swift in Sources */,
 				A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */,
 				A14B1BB5246B0447008632F8 /* SceneDelegate.swift in Sources */,
-				A1FCC197247BB907009BAD42 /* MaskTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
