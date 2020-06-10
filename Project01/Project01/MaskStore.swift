@@ -14,7 +14,7 @@ import Contacts
 class MaskStore: NSObject,MKAnnotation{
     let title: String?
     let name: String
-    let type: String
+    var type: String
     let coordinate: CLLocationCoordinate2D
     
     var markerTintColor: UIColor{
@@ -34,7 +34,16 @@ class MaskStore: NSObject,MKAnnotation{
          coordinate: CLLocationCoordinate2D){
         self.title = addr
         self.name = name
-        self.type = type
+        switch type {
+        case "01":
+            self.type = "약국"
+        case "02":
+            self.type = "우체국"
+        case "03":
+            self.type = "03"
+        default:
+            self.type = "None"
+        }
         self.coordinate = coordinate
         
         super.init()
@@ -43,6 +52,17 @@ class MaskStore: NSObject,MKAnnotation{
         self.title = json["addr"] as? String ?? "NO Title"
         self.name = json["name"] as! String
         self.type = json["type"] as! String
+        
+        switch self.type {
+        case "01":
+            self.type = "약국"
+        case "02":
+            self.type = "우체국"
+        case "03":
+            self.type = "마트"
+        default:
+            self.type = "None"
+        }
         
         if let latitude = (json["lat"] as? NSNumber),
             let longitude = (json["lng"] as? NSNumber){

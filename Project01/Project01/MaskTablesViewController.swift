@@ -13,11 +13,17 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
     @IBOutlet weak var StoresTableView: UITableView!
     @IBOutlet weak var StoreDetailTableView: UITableView!
     
+    @IBOutlet var searchFooter: SearchFooter!
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var name : String = ""
     var MaskStores : [MaskStore] = []
-    
+    var filteredMaskStores = [MaskStore]()
     var storeName : String = ""
     var storeAddr : String = ""
+    
+    var currentX : CGFloat = 0
+    var currentY : CGFloat = 0
     
     func loadInitialData(addr: String){
           // guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
@@ -50,10 +56,22 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInitialData(addr: name)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Candies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // Setup the Scope Bar
+        searchController.searchBar.scopeButtonTitles = ["All", "약국", "우체국", "마트"]
+        searchController.searchBar.delegate = self
+        
+        
         StoresTableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -64,6 +82,7 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
             if let navController = segue.destination as? UINavigationController{
               if let maskMapViewController = navController.topViewController as? MaskMapViewController{
                 maskMapViewController.name = self.name//url + sgguCd
+                maskMapViewController.storeName = self.storeName
               }
             }
         }
@@ -74,24 +93,44 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
             return 1
         }
         else if tableView == StoresTableView{
+            if isFiltering(){
+                return filteredMaskStores.count
+            }
             return MaskStores.count
         }
         return 1
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first{
+            let touchPoint = touch.location(in: StoresTableView)
+            currentX = touchPoint.x
+            currentY = touchPoint.y
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == StoreDetailTableView{
+            
         }
         else if tableView == StoresTableView{
-            let store = MaskStores[indexPath.row]
+            
+            let store : MaskStore
+            if isFiltering(){
+                store = filteredMaskStores[indexPath.row]
+            }else{
+                store = MaskStores[indexPath.row]
+            }
              
             // let tipAmt = possibleTips[tipPct]!.tipAmt
-
+            
             storeName = store.name
             storeAddr = store.title ?? ""
             
             StoreDetailTableView.reloadData()
+            
+            let explore2 = ExplodeView(frame: CGRect(x: currentX, y: currentY, width: 10, height: 10))
+            StoresTableView.superview?.addSubview(explore2)
+            StoresTableView.superview?.sendSubviewToBack(_: explore2)
         }
     }
  
@@ -112,9 +151,17 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
         else{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = MaskStores[indexPath.row].name
+        let store : MaskStore
+            
+        if isFiltering(){
         
-        cell.detailTextLabel?.text = MaskStores[indexPath.row].type
+            store = filteredMaskStores[indexPath.row]
+        }else{
+            store = MaskStores[indexPath.row]
+        }
+        cell.textLabel?.text = store.name
+        
+        cell.detailTextLabel?.text = store.type
         // Configure the cell...
             return cell
         }
@@ -131,4 +178,42 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
     }
     */
 
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+      filteredMaskStores = MaskStores.filter({( store : MaskStore) -> Bool in
+        let doesCategoryMatch = (scope == "All") || (store.type == scope)
+        
+        if searchBarIsEmpty() {
+          return doesCategoryMatch
+        } else {
+          return doesCategoryMatch && store.name.lowercased().contains(searchText.lowercased())
+        }
+      })
+      StoresTableView.reloadData()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+      let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+      return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+}
+
+extension MaskTablesViewController: UISearchBarDelegate {
+  // MARK: - UISearchBar Delegate
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+  }
+}
+
+extension MaskTablesViewController: UISearchResultsUpdating {
+  // MARK: - UISearchResultsUpdating Delegate
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+    filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+  }
 }

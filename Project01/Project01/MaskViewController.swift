@@ -191,14 +191,19 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        firstId = pickerDataSource[row]
-        let explore1 = ExplodeView(frame: CGRect(x: 30, y: 300, width: 10, height: 10))
-        pickerView.superview?.addSubview(explore1)
-        pickerView.superview?.sendSubviewToBack(_: explore1)
+        let explore1 = ExplodeView(frame: CGRect(x: 30, y: 190, width: 10, height: 10))
+        //pickerView.superview?.addSubview(explore1)
+        //pickerView.superview?.sendSubviewToBack(_: explore1)
         
-        let explore2 = ExplodeView(frame: CGRect(x: 350, y: 300, width: 10, height: 10))
-        pickerView.superview?.addSubview(explore2)
-        pickerView.superview?.sendSubviewToBack(_: explore2)
+        let explore2 = ExplodeView(frame: CGRect(x: 350, y: 190, width: 10, height: 10))
+        //pickerView.superview?.addSubview(explore2)
+        //pickerView.superview?.sendSubviewToBack(_: explore2)
         //audioController.playerEffect(name: SoundDing)
+        
+        
+        let explore3 = FireworkView(frame: CGRect(x: 180, y: 190, width: 10, height: 10))
+        pickerView.superview?.addSubview(explore3)
+        pickerView.superview?.sendSubviewToBack(_: explore3)
     }
     
     func authorizeSR()
