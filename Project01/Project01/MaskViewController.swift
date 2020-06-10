@@ -12,7 +12,7 @@ import SwiftUI
 
 var aMaskStores : [MaskStore] = []
 var total : Double = 0
-var test : Dictionary<String,Double> = ["서울":0, "부산":0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "울산": 0, "경기":0, "강원":0,"충청":0,"전라":0,"경상":0,"제주":0]
+var test : Dictionary<String,Double> = ["서울":0, "부산":0, "울산": 0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "경기":0, "강원":0,"충청":0,"전라":0,"경상":0,"제주":0]
 class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -21,7 +21,7 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var TextView: UITextView!
     var firstId : String = "서울특별시"
     
-    var areas : Dictionary<String,Double> = ["서울":0, "부산":0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "울산": 0, "경기":0, "강원":0,
+    var areas : Dictionary<String,Double> = ["서울":0, "부산":0, "울산": 0, "대구": 0,"인천": 0, "광주": 0,"대전":0, "경기":0, "강원":0,
                               "충청":0,"전라":0,"경상":0,"제주":0]
     
     
@@ -61,7 +61,7 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    let stations = WeatherInformation()
+    
     
     @IBSegueAction func embedSwiftUIView(_ coder: NSCoder) -> UIViewController? {
         loadInitialData(addr: "")
@@ -78,7 +78,7 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
         
-        return UIHostingController(coder:coder, rootView: StationInfo(station: (areas)))
+        return UIHostingController(coder:coder, rootView: ContentView(dict: areas))
     }
     @IBAction func startTranscribing(_ sender: Any)
     {
@@ -192,11 +192,11 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        firstId = pickerDataSource[row]
         let explore1 = ExplodeView(frame: CGRect(x: 30, y: 190, width: 10, height: 10))
-        //pickerView.superview?.addSubview(explore1)
-        //pickerView.superview?.sendSubviewToBack(_: explore1)
+        pickerView.superview?.addSubview(explore1)
+        pickerView.superview?.sendSubviewToBack(_: explore1)
         
         let explore2 = ExplodeView(frame: CGRect(x: 350, y: 190, width: 10, height: 10))
-        //pickerView.superview?.addSubview(explore2)
+        pickerView.superview?.addSubview(explore2)
         //pickerView.superview?.sendSubviewToBack(_: explore2)
         //audioController.playerEffect(name: SoundDing)
         

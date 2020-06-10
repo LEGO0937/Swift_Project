@@ -46,8 +46,8 @@
                                     <action selector="startTranscribing:" destination="ub9-Gv-lEk" eventType="touchUpInside" id="QHw-xm-zzS"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="exy-ou-44a">
-                                <rect key="frame" x="50" y="373" width="297" height="63"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="exy-ou-44a">
+                                <rect key="frame" x="50" y="373" width="297" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="ytB-fG-qhB"/>
@@ -57,7 +57,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dxf-sH-MZs">
-                                <rect key="frame" x="50" y="444" width="308" height="369"/>
+                                <rect key="frame" x="50" y="417" width="308" height="350"/>
                                 <connections>
                                     <segue destination="zKg-8M-qCc" kind="embed" destinationCreationSelector="embedSwiftUIView:" id="Xe4-cq-ja8"/>
                                 </connections>
@@ -257,11 +257,6 @@
                                     <outlet property="delegate" destination="12q-JY-YPH" id="Y9o-EZ-m1V"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-C5-QCL">
-                                <rect key="frame" x="20" y="445" width="374" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EuH-xq-ka4"/>

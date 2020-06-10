@@ -27,6 +27,7 @@
 /// THE SOFTWARE.
 
 import Foundation
+import SwiftUI
 
 extension Double {
   var stringToOneDecimal: String {
@@ -65,3 +66,15 @@ extension Double {
     return "0°"
   }
 }
+
+extension Double {
+    static func randomColorRGB() -> Double {
+        return Double(arc4random()) / Double(UInt32.max)
+    }
+}
+extension Color {
+    static func random() -> Color {
+        return Color(red: .randomColorRGB(), green: .randomColorRGB(), blue: .randomColorRGB())
+    }
+}
+
