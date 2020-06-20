@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzT-LP-urf">
-                                <rect key="frame" x="0.0" y="88" width="414" height="214"/>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzT-LP-urf">
+                                <rect key="frame" x="0.0" y="200" width="414" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="214" id="CDH-XO-cOb"/>
                                 </constraints>
@@ -62,6 +62,14 @@
                                     <segue destination="zKg-8M-qCc" kind="embed" destinationCreationSelector="embedSwiftUIView:" id="Xe4-cq-ja8"/>
                                 </connections>
                             </containerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWP-EJ-BeD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="104"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Z9m-h7-N4H" id="5tb-5E-P4g"/>
+                                    <outlet property="delegate" destination="Z9m-h7-N4H" id="WTW-dQ-OS1"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -86,14 +94,14 @@
                     <navigationItem key="navigationItem" title="마스크 판매정보 표시 (시, 도)" id="Wui-Za-hgF">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="hwV-5n-qAk">
                             <connections>
-                                <segue destination="fGe-yW-Swf" kind="show" identifier="segueToMask2View" id="efx-1u-4xo"/>
+                                <segue destination="aiQ-cO-BZI" kind="show" identifier="segueToMaskTableView" id="N5Q-jb-pXB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="TextView" destination="exy-ou-44a" id="1aI-bz-AaV"/>
-                        <outlet property="firstName" destination="gzT-LP-urf" id="j4w-QE-XBr"/>
-                        <outlet property="pickerView" destination="gzT-LP-urf" id="GTN-rY-s40"/>
+                        <outlet property="firstName" destination="oWP-EJ-BeD" id="0CJ-4h-qYX"/>
+                        <outlet property="secondName" destination="gzT-LP-urf" id="SlX-rK-ePp"/>
                         <outlet property="stopButton" destination="wNF-dw-X9Q" id="HUt-KW-Wtk"/>
                         <outlet property="transcribeButton" destination="XXz-8x-zzy" id="sc8-x8-Uni"/>
                     </connections>
@@ -108,7 +116,7 @@
                 <hostingController id="zKg-8M-qCc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBG-jk-ao0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1331" y="805"/>
+            <point key="canvasLocation" x="1348" y="807"/>
         </scene>
         <!--마스크 판매정보 표시(구, 군)-->
         <scene sceneID="rLA-mL-Ajn">
@@ -160,11 +168,7 @@
                                 <segue destination="lKG-DE-9Dv" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="ME2-7W-Sro"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="03I-we-nSG">
-                            <connections>
-                                <segue destination="aiQ-cO-BZI" kind="show" identifier="segueToMask3View" id="ddZ-uZ-Bv3"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="03I-we-nSG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="TextView" destination="ZHV-sW-Dld" id="EyO-ug-d7j"/>
@@ -177,7 +181,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5n-y9-hNQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="lKG-DE-9Dv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3013.04347826087" y="284.59821428571428"/>
+            <point key="canvasLocation" x="3270" y="-55"/>
         </scene>
         <!--Mask Tables View Controller-->
         <scene sceneID="VUc-PC-vDQ">
@@ -397,7 +401,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8uJ-6M-2gc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102.898550724638" y="284.59821428571428"/>
+            <point key="canvasLocation" x="2472" y="-143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5aA-kf-uM6">

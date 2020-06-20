@@ -18,6 +18,7 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
     
     var name : String = ""
     var MaskStores : [MaskStore] = []
+    
     var filteredMaskStores = [MaskStore]()
     var storeName : String = ""
     var storeAddr : String = ""
@@ -47,8 +48,20 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
                else{return}
            //let t = works[0]
           // let t = works.compactMap{$0 as? [String : Any] }
+            
            let validWorks = works.flatMap{ MaskStore(json: $0) }
-           MaskStores.append(contentsOf: validWorks)
+           var stores : [MaskStore] = []
+            stores.append(contentsOf: validWorks)
+            var title : [Substring] = []
+            var seperatedN : String = ""
+            for i in 0..<stores.count{
+                title = stores[i].title?.split(separator: " ") as! [Substring]
+                seperatedN = String(title[0] + " " + title[1])
+                if self.name == seperatedN{
+                    MaskStores.append(stores[i])
+                }
+            }
+            
            }
        }
        
