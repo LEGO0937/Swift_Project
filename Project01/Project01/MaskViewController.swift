@@ -94,17 +94,32 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         stopButton.isEnabled = false
         
         var idx : Int = 0
+        
+        var titles : [Substring] = []
+        
+        titles = TextView.text.split(separator: " ")
+        
         for key in pickerDataSource
         {
-            if TextView.text == key{
-                self.firstName.selectRow(idx, inComponent: 0, animated: true)
-                firstId = key
-            break
+            if titles[0] == key{
+                var idx2 : Int = 0
+                
+                for key2 in pickerDataSource2[String(titles[0]) ?? "서울특별시"]!
+                {
+                    if titles[1] == key2{
+                        self.firstName.selectRow(idx, inComponent: 0, animated: true)
+                        self.secondName.selectRow(idx2, inComponent: 0, animated: true)
+                        firstId = key
+                        secondId = key2
+                        return
+                    }
+                    idx2 += 1
+                }
+                //---
             }
-            
             idx += 1
         }
-
+       
     }
     func startSession() throws {
         if let recognitionTask = speechRecognitionTask{
@@ -192,9 +207,8 @@ class MaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.secondName.dataSource = self;
         
     }
-    
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { return 40 } 
  
-    
      func numberOfComponents(in pickerView: UIPickerView) -> Int{
            return 1
        }
