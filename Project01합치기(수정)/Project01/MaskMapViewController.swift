@@ -15,6 +15,7 @@ class MaskMapViewController: UIViewController , MKMapViewDelegate{
     var posts =  NSMutableArray()
     var name : String = ""
     var storeName : String = ""
+    var storeAddr : String = ""
     var MaskStores : [MaskStore] = []
        
        //전송받은 posts 배열에서 정보를 얻어서 Hospital 객체를 생성하고 배열에 추가 생성
@@ -47,7 +48,7 @@ class MaskMapViewController: UIViewController , MKMapViewDelegate{
            MaskStores.append(contentsOf: validWorks)
            }
         for store in MaskStores {
-            if (store.name == self.storeName)
+            if (store.name == self.storeName && store.title == self.storeAddr)
             {
                 return CLLocation(latitude: store.coordinate.latitude, longitude: store.coordinate.longitude)
             }

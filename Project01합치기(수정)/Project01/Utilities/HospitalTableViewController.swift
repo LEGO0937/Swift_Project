@@ -17,7 +17,8 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
     var url:String?
     
     var parser = XMLParser()
-      var posts = NSMutableArray()
+    var posts : [Hospital] = []
+    var filteredPosts : [Hospital] = []
       var elements = NSMutableDictionary()
       var element = NSString()
       var yadmNm = NSMutableString()
@@ -29,10 +30,24 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
     var firstId : String = "서울"
     var secondId : String = "종로구"
     
+    
+    @IBOutlet var searchFooter: SearchFooter!
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         beginParsing()
         
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Candies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // Setup the Scope Bar
+        searchController.searchBar.scopeButtonTitles = ["All"]
+        searchController.searchBar.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,16 +64,27 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if isFiltering(){
+            return filteredPosts.count
+        }
+        
         return posts.count
     }
     
     override func tableView(_ tableView : UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
        
            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-           
-           cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "yadmNm") as! NSString as String
-           cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "telno") as! NSString as String
-           
+           let hospital : Hospital
+        if isFiltering(){
+        
+            hospital = filteredPosts[indexPath.row]
+        }else{
+            hospital = posts[indexPath.row]
+        }
+        
+        cell.textLabel?.text = hospital.yadmNm
+        
+        cell.detailTextLabel?.text = hospital.telno
            return cell
        }
 
@@ -125,6 +151,7 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
     
       func beginParsing(){
           posts = []
+        filteredPosts = []
           parser = XMLParser(contentsOf: (URL(string:url!))!)!
           parser.delegate = self
           parser.parse()
@@ -194,7 +221,11 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
             name = titles[0]
             
             if firstId == sidoNm as String && secondId == name{
-                    posts.add(elements)
+                var element = Hospital(yadmNm: elements.value(forKey: "yadmNm") as! String,telno: elements.value(forKey: "telno") as! String,
+                                       sidoNm: elements.value(forKey: "sidoNm") as! String,sgguNm: elements.value(forKey: "sgguNm")as! String,
+                                       spclAdmTyCd: elements.value(forKey: "spclAdmTyCd") as! String)
+                
+                    posts.append(element)
             }
             
         }
@@ -202,8 +233,47 @@ class HospitalTableViewController: UITableViewController, XMLParserDelegate {
     }
 
     
-}
 
+
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+          filteredPosts = posts.filter({( hospital : Hospital) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (hospital.spclAdmTyCd == scope)
+            
+            if searchBarIsEmpty() {
+              return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && hospital.yadmNm.lowercased().contains(searchText.lowercased())
+            }
+          })
+          tbData.reloadData()
+        }
+        
+        func searchBarIsEmpty() -> Bool {
+          return searchController.searchBar.text?.isEmpty ?? true
+        }
+        
+        func isFiltering() -> Bool {
+          let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+          return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+        }
+        
+    }
+
+    extension HospitalTableViewController: UISearchBarDelegate {
+      // MARK: - UISearchBar Delegate
+      func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+      }
+    }
+
+    extension HospitalTableViewController: UISearchResultsUpdating {
+      // MARK: - UISearchResultsUpdating Delegate
+      func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+      }
+    }
 
 
 

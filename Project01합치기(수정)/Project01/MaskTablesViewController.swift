@@ -96,6 +96,7 @@ class MaskTablesViewController: UIViewController, UITableViewDataSource,UITableV
               if let maskMapViewController = navController.topViewController as? MaskMapViewController{
                 maskMapViewController.name = self.name//url + sgguCd
                 maskMapViewController.storeName = self.storeName
+                maskMapViewController.storeAddr = self.storeAddr
               }
             }
         }

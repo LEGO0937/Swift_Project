@@ -12,6 +12,7 @@
 		A110A5CA246C3E6400168E8C /* MaskStoreViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110A5C9246C3E6400168E8C /* MaskStoreViews.swift */; };
 		A12497DB246BF5EE0057FDAF /* Mask2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12497DA246BF5EE0057FDAF /* Mask2ViewController.swift */; };
 		A12497DD246C09DB0057FDAF /* MaskMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12497DC246C09DB0057FDAF /* MaskMapViewController.swift */; };
+		A13FCA7F24A2B81300F50AA5 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FCA7E24A2B81300F50AA5 /* Hospital.swift */; };
 		A14B1BB3246B0447008632F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BB2246B0447008632F8 /* AppDelegate.swift */; };
 		A14B1BB5246B0447008632F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BB4246B0447008632F8 /* SceneDelegate.swift */; };
 		A14B1BBA246B0447008632F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B1BB8246B0447008632F8 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		A110A5C9246C3E6400168E8C /* MaskStoreViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskStoreViews.swift; sourceTree = "<group>"; };
 		A12497DA246BF5EE0057FDAF /* Mask2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mask2ViewController.swift; sourceTree = "<group>"; };
 		A12497DC246C09DB0057FDAF /* MaskMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskMapViewController.swift; sourceTree = "<group>"; };
+		A13FCA7E24A2B81300F50AA5 /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		A14B1BAF246B0447008632F8 /* Project01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14B1BB2246B0447008632F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14B1BB4246B0447008632F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				A110A5C7246C2E6000168E8C /* MaskStore.swift */,
 				A1FCC198247BBB94009BAD42 /* MaskDetailedTableViewController.swift */,
 				A1CD72FC247D55CF003B69A1 /* MaskTablesViewController.swift */,
+				A13FCA7E24A2B81300F50AA5 /* Hospital.swift */,
 			);
 			path = Project01;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				A1CD72FD247D55CF003B69A1 /* MaskTablesViewController.swift in Sources */,
 				A1D939E4247BAADB00915E35 /* Config.swift in Sources */,
 				A157C5522490961400E6E244 /* SlideData.swift in Sources */,
+				A13FCA7F24A2B81300F50AA5 /* Hospital.swift in Sources */,
 				A151EB6824A1B04B001C4A0F /* HospitalTableViewController.swift in Sources */,
 				A157C559249097C400E6E244 /* ContentViewModel.swift in Sources */,
 				A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */,
