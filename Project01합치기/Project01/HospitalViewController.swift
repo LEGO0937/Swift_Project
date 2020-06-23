@@ -59,7 +59,7 @@ class HospitalViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var pickerDataSource2 = ["서울특별시", "부산광역시","대구광역시","인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원도",
        "충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주특별자치도"]
-       var pickerDataSource3 = [
+    var pickerDataSource3 = [
        "종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동장구", "관악구", "서초구", "강남구", "송파구", "강동구"]
        
    var url : String = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=cCHEHEp%2BWRwV%2FfoF1u%2FVeQGoxigy9y%2FrGH8XHy3oN11YntHkyn3zf8fpQiLDIKWuVY6qT9MUkLU8yQ1naKv%2BFw%3D%3D&numOfRows=10&spclAdmTyCd="
