@@ -22,6 +22,9 @@
 		A14B1BC9246B059A008632F8 /* HospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B1BC8246B059A008632F8 /* HospitalViewController.swift */; };
 		A151EB6824A1B04B001C4A0F /* HospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151EB6724A1B04B001C4A0F /* HospitalTableViewController.swift */; };
 		A151EB6A24A1B199001C4A0F /* HospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151EB6924A1B199001C4A0F /* HospitalMapViewController.swift */; };
+		A151EB7924A349A9001C4A0F /* stop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A151EB7724A349A8001C4A0F /* stop.jpg */; };
+		A151EB7A24A349A9001C4A0F /* listen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A151EB7824A349A9001C4A0F /* listen.jpg */; };
+		A151EB7C24A34B4A001C4A0F /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A151EB7B24A34B4A001C4A0F /* images.jpeg */; };
 		A157C54C249054B100E6E244 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157C54B249054B100E6E244 /* SearchFooter.swift */; };
 		A157C5502490961400E6E244 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157C54D2490961400E6E244 /* DataItem.swift */; };
 		A157C5512490961400E6E244 /* PieChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157C54E2490961400E6E244 /* PieChartData.swift */; };
@@ -63,6 +66,9 @@
 		A14B1BC8246B059A008632F8 /* HospitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalViewController.swift; sourceTree = "<group>"; };
 		A151EB6724A1B04B001C4A0F /* HospitalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HospitalTableViewController.swift; path = Utilities/HospitalTableViewController.swift; sourceTree = "<group>"; };
 		A151EB6924A1B199001C4A0F /* HospitalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapViewController.swift; sourceTree = "<group>"; };
+		A151EB7724A349A8001C4A0F /* stop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stop.jpg; sourceTree = "<group>"; };
+		A151EB7824A349A9001C4A0F /* listen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = listen.jpg; sourceTree = "<group>"; };
+		A151EB7B24A34B4A001C4A0F /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		A157C54B249054B100E6E244 /* SearchFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchFooter.swift; path = Project01/SearchFooter.swift; sourceTree = SOURCE_ROOT; };
 		A157C54D2490961400E6E244 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		A157C54E2490961400E6E244 /* PieChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartData.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 		A1D939E6247BAAE200915E35 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A151EB7824A349A9001C4A0F /* listen.jpg */,
+				A151EB7724A349A8001C4A0F /* stop.jpg */,
+				A151EB7B24A34B4A001C4A0F /* images.jpeg */,
 				A1D5A0C2248FCEC400A0DFBB /* 54.png */,
 				A1D939E7247BAAFB00915E35 /* particle.png */,
 			);
@@ -266,9 +275,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A151EB7A24A349A9001C4A0F /* listen.jpg in Resources */,
 				A1F1E59B248903D400192BA6 /* weather-data.csv in Resources */,
+				A151EB7C24A34B4A001C4A0F /* images.jpeg in Resources */,
 				A14B1BBF246B0448008632F8 /* LaunchScreen.storyboard in Resources */,
 				A1D5A0C3248FCEC400A0DFBB /* 54.png in Resources */,
+				A151EB7924A349A9001C4A0F /* stop.jpg in Resources */,
 				A14B1BBC246B0448008632F8 /* Assets.xcassets in Resources */,
 				A14B1BBA246B0447008632F8 /* Main.storyboard in Resources */,
 				A1D939E8247BAAFB00915E35 /* particle.png in Resources */,
